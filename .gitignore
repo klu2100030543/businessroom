@@ -1,0 +1,31 @@
+# Editor and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Secrets: never commit these
+.env
+.env.*
+
+# Database setup notes (run in the Supabase SQL editor, not part of the website)
+*.sql
+supabase_setup.sql
+supabase_storage.sql
+
+# Old backups, temporary files and archives
+*.pre*.html
+*.bak
+*.tmp
+*.zip
+*.log
+node_modules/
+
+# Videos are uploaded through the admin page, never stored in the repo
+*.mp4
+*.mov
+*.MOV
+*.webm
+

@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#06192a" />
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <title>THEBUSINESSROOM Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --gold: #e6bf7c;
+        --gold-bright: #ffe0a5;
+        --bg: #030e19;
+        --card: #0a2134;
+        --card-2: #0d2a40;
+        --line: rgba(231, 192, 125, 0.22);
+        --muted: #b4c0c9;
+        --danger: #ff8a80;
+        --ok: #7bd88f;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      [hidden] {
+        display: none !important;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: #f5f3ee;
+        font-family: "Manrope", system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-tap-highlight-color: transparent;
+      }
+      a {
+        color: var(--gold);
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+        color: inherit;
+      }
+      .wrap {
+        width: min(720px, 100% - 32px);
+        margin: 0 auto;
+      }
+
+      /* Buttons and fields: big touch targets */
+      .btn {
+        min-height: 48px;
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: 1px solid var(--gold);
+        background: var(--gold);
+        color: #081521;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--gold);
+      }
+      .btn.danger {
+        background: transparent;
+        border-color: rgba(255, 138, 128, 0.5);
+        color: var(--danger);
+      }
+      a.btn {
+        text-decoration: none;
+      }
+      .btn.small {
+        min-height: 40px;
+        padding: 8px 14px;
+        font-size: 14px;
+      }
+      .btn.block {
+        width: 100%;
+      }
+      .btn:disabled {
+        opacity: 0.55;
+        cursor: not-allowed;
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+        margin: 14px 0;
+      }
+      .field label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--gold);
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 14px;
+        background: #041828;
+        border: 1px solid #4a6070;
+        border-radius: 12px;
+        font-size: 16px;
+      }
+      .field input[type="file"] {
+        padding: 10px;
+      }
+      .field textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--gold-bright);
+        outline-offset: 3px;
+      }
+      .check {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-height: 48px;
+        margin: 8px 0;
+      }
+      .check input {
+        width: 24px;
+        height: 24px;
+        accent-color: var(--gold);
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 6px 0;
+      }
+
+      /* Login */
+      .login {
+        min-height: 100svh;
+        display: grid;
+        align-content: center;
+        padding: 24px 0;
+      }
+      .brand {
+        font-family: "Cinzel", serif;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+        font-size: 20px;
+      }
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 20px;
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .msg {
+        min-height: 22px;
+        margin: 10px 0 0;
+        font-size: 14px;
+      }
+      .msg.error {
+        color: var(--danger);
+      }
+      .msg.ok {
+        color: var(--ok);
+      }
+
+      /* Portal shell */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: rgba(3, 14, 25, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+        padding-top: env(safe-area-inset-top);
+      }
+      .topbar .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 60px;
+        gap: 12px;
+      }
+      main {
+        padding: 20px 0 calc(110px + env(safe-area-inset-bottom));
+      }
+      .tabbar {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        background: #061727;
+        border-top: 1px solid var(--line);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .tabbar .wrap {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .tab {
+        min-height: 64px;
+        background: none;
+        border: 0;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        position: relative;
+      }
+      .tab[aria-selected="true"] {
+        color: var(--gold);
+        box-shadow: inset 0 3px 0 var(--gold);
+      }
+      .badge {
+        display: inline-block;
+        min-width: 20px;
+        padding: 0 6px;
+        margin-left: 6px;
+        border-radius: 999px;
+        background: var(--gold);
+        color: #081521;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 20px;
+      }
+      .head-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      /* Lists */
+      .list {
+        display: grid;
+        gap: 14px;
+      }
+      .item {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 14px;
+      }
+      .item video {
+        display: block;
+        width: 100%;
+        max-height: 260px;
+        border-radius: 10px;
+        background: #000;
+        margin-bottom: 12px;
+      }
+      .item h3 {
+        font-size: 17px;
+        word-break: break-word;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 14px;
+        margin: 4px 0 0;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+        align-items: center;
+      }
+      .pill {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        border: 1px solid var(--line);
+      }
+      .pill.live {
+        color: var(--ok);
+        border-color: rgba(123, 216, 143, 0.4);
+      }
+      .pill.hidden {
+        color: var(--muted);
+      }
+      .switch {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 40px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .switch input {
+        width: 22px;
+        height: 22px;
+        accent-color: var(--gold);
+      }
+      .progress {
+        height: 10px;
+        border-radius: 999px;
+        background: #041828;
+        border: 1px solid var(--line);
+        overflow: hidden;
+        margin: 10px 0 6px;
+      }
+      .progress > div {
+        height: 100%;
+        width: 0;
+        background: var(--gold);
+        transition: width 0.2s;
+      }
+      .seg {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        margin-bottom: 16px;
+        padding-bottom: 4px;
+      }
+      .seg button {
+        flex: 0 0 auto;
+        min-height: 40px;
+        padding: 6px 16px;
+        border-radius: 999px;
+        background: #0b253a;
+        border: 1px solid #355069;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .seg button[aria-pressed="true"] {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #081521;
+      }
+      .msg-body {
+        white-space: pre-wrap;
+        word-break: break-word;
+        background: var(--card-2);
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin-top: 10px;
+        font-size: 15px;
+      }
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .empty {
+        text-align: center;
+        color: var(--muted);
+        padding: 36px 12px;
+        border: 1px dashed #607080;
+        border-radius: 16px;
+      }
+      .toast {
+        position: fixed;
+        left: 16px;
+        right: 16px;
+        bottom: calc(86px + env(safe-area-inset-bottom));
+        z-index: 60;
+        margin: 0 auto;
+        max-width: 420px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: #12384f;
+        border: 1px solid var(--gold);
+        box-shadow: 0 12px 40px #000a;
+        font-weight: 600;
+      }
+      .toast.error {
+        border-color: var(--danger);
+      }
+      @media (min-width: 720px) {
+        .tab {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 380px) {
+        .brand {
+          font-size: 15px;
+          letter-spacing: 0.08em;
+        }
+        .btn.small {
+          padding: 8px 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sign in -->
+    <section class="login" id="loginView" hidden>
+      <div class="wrap">
+        <div class="brand">THEBUSINESSROOM</div>
+        <h1 style="margin: 6px 0 18px; font-size: 26px">Admin sign in</h1>
+        <form class="panel" id="loginForm">
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input
+              id="loginEmail"
+              type="email"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input
+              id="loginPassword"
+              type="password"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          <button class="btn block" id="loginBtn" type="submit">Sign in</button>
+          <p class="msg" id="loginMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Portal -->
+    <div id="portalView" hidden>
+      <header class="topbar">
+        <div class="wrap">
+          <span class="brand">THEBUSINESSROOM</span>
+          <button class="btn outline small" id="signOut" type="button">
+            Sign out
+          </button>
+        </div>
+      </header>
+
+      <main class="wrap">
+        <!-- Videos -->
+        <section id="tab-videos" role="tabpanel">
+          <div class="head-row">
+            <h2>Videos</h2>
+            <button class="btn" id="addVideoBtn" type="button">＋ Add video</button>
+          </div>
+
+          <form class="panel" id="videoForm" hidden style="margin-bottom: 18px">
+            <h3 id="videoFormTitle">Add video</h3>
+            <div class="field">
+              <label for="vTitle">Title *</label>
+              <input id="vTitle" maxlength="120" required />
+            </div>
+            <div class="field">
+              <label for="vCategory">Category *</label>
+              <select id="vCategory" required></select>
+            </div>
+            <div class="field">
+              <label for="vLocation">Location</label>
+              <input id="vLocation" maxlength="120" placeholder="e.g. Hyderabad" />
+            </div>
+            <div class="field">
+              <label for="vFile" id="vFileLabel">Video file *</label>
+              <input
+                id="vFile"
+                type="file"
+                accept="video/*,.mkv,.avi,.wmv,.flv,.3gp,.3g2,.mts,.m2ts,.mpg,.mpeg,.ogv"
+              />
+              <p class="hint" id="vFileHint"></p>
+            </div>
+            <label class="check">
+              <input id="vPublish" type="checkbox" checked />
+              <span>Show on the website</span>
+            </label>
+            <div id="uploadBox" hidden>
+              <div class="progress"><div id="uploadBar"></div></div>
+              <p class="hint" id="uploadText"></p>
+            </div>
+            <div class="actions">
+              <button class="btn" id="saveVideoBtn" type="submit">Upload</button>
+              <button class="btn outline" id="cancelVideoBtn" type="button">
+                Cancel
+              </button>
+            </div>
+            <p class="msg" id="videoMsg" role="status"></p>
+          </form>
+
+          <div class="list" id="videoList"></div>
+        </section>
+
+        <!-- Categories -->
+        <section id="tab-categories" role="tabpanel" hidden>
+          <div class="head-row"><h2>Categories</h2></div>
+          <form class="panel" id="catForm" style="margin-bottom: 18px">
+            <div class="field" style="margin-top: 0">
+              <label for="catNames">Add categories (one per line)</label>
+              <textarea
+                id="catNames"
+                placeholder="Luxury Salons &amp; Beauty&#10;Interiors &amp; Architecture"
+              ></textarea>
+            </div>
+            <button class="btn block" id="catAddBtn" type="submit">
+              Add categories
+            </button>
+            <p class="msg" id="catMsg" role="status"></p>
+          </form>
+          <div class="list" id="catList"></div>
+        </section>
+
+        <!-- Enquiries -->
+        <section id="tab-enquiries" role="tabpanel" hidden>
+          <div class="head-row"><h2>Enquiries</h2></div>
+          <div class="seg" id="enqFilter">
+            <button type="button" data-f="new" aria-pressed="true">New</button>
+            <button type="button" data-f="contacted" aria-pressed="false">
+              Contacted
+            </button>
+            <button type="button" data-f="closed" aria-pressed="false">
+              Closed
+            </button>
+            <button type="button" data-f="all" aria-pressed="false">All</button>
+          </div>
+          <div class="list" id="enqList"></div>
+        </section>
+      </main>
+
+      <nav class="tabbar" id="tabbar" role="tablist" aria-label="Admin sections">
+        <div class="wrap">
+          <button class="tab" role="tab" data-tab="videos" aria-selected="true">
+            Videos
+          </button>
+          <button class="tab" role="tab" data-tab="categories" aria-selected="false">
+            Categories
+          </button>
+          <button class="tab" role="tab" data-tab="enquiries" aria-selected="false">
+            Enquiries<span class="badge" id="newBadge" hidden>0</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="toast" id="toast" role="status" hidden></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script>
+      // Admin portal: uses only the public anon key. What this page may do is
+      // decided by the signed-in user and your Supabase row-level security.
+      const BUCKET = "videos";
+      const MAX_MB = 50; // Supabase free plan limit per file
+      // Any video can be uploaded, but browsers only play some formats.
+      const VIDEO_EXTS = [
+        "mp4", "m4v", "mov", "webm", "mkv", "avi", "wmv", "flv",
+        "3gp", "3g2", "mts", "m2ts", "mpg", "mpeg", "ogv",
+      ];
+      const PLAYABLE_EXTS = ["mp4", "m4v", "webm", "mov"];
+      const extOf = (f) =>
+        (f.name.split(".").pop() || "").toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 5);
+      const isVideo = (f) =>
+        (f.type || "").startsWith("video/") || VIDEO_EXTS.includes(extOf(f));
+      const $ = (id) => document.getElementById(id);
+      const esc = (s) =>
+        String(s ?? "").replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+
+      const configured =
+        typeof SUPABASE_URL === "string" &&
+        /^https:\/\//.test(SUPABASE_URL) &&
+        typeof SUPABASE_ANON_KEY === "string" &&
+        SUPABASE_ANON_KEY !== "" &&
+        !SUPABASE_ANON_KEY.startsWith("YOUR_") &&
+        !!window.supabase;
+      const sb = configured
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        : null;
+
+      let categories = [];
+      let videos = [];
+      let enquiries = [];
+      let enqFilter = "new";
+      let editingId = null;
+      let loadError = "";
+      let abortUpload = null;
+      let toastTimer;
+
+      function toast(text, isError) {
+        const t = $("toast");
+        t.textContent = text;
+        t.className = "toast" + (isError ? " error" : "");
+        t.hidden = false;
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => (t.hidden = true), 3500);
+      }
+      function setMsg(id, text, kind) {
+        const el = $(id);
+        el.textContent = text || "";
+        el.className = "msg" + (kind ? " " + kind : "");
+      }
+      const errText = (e) => (e && e.message) || "Something went wrong.";
+
+      /* ---------- views and tabs ---------- */
+      function showView(signedIn) {
+        $("loginView").hidden = signedIn;
+        $("portalView").hidden = !signedIn;
+      }
+      function setTab(name) {
+        document.querySelectorAll(".tab").forEach((b) => {
+          b.setAttribute("aria-selected", String(b.dataset.tab === name));
+        });
+        ["videos", "categories", "enquiries"].forEach((n) => {
+          $("tab-" + n).hidden = n !== name;
+        });
+        window.scrollTo({ top: 0 });
+      }
+      document.querySelectorAll(".tab").forEach((b) => {
+        b.onclick = () => setTab(b.dataset.tab);
+      });
+
+      /* ---------- auth ---------- */
+      $("loginForm").onsubmit = async (e) => {
+        e.preventDefault();
+        if (!sb) {
+          setMsg("loginMsg", "Site is not configured yet (see config.js).", "error");
+          return;
+        }
+        $("loginBtn").disabled = true;
+        setMsg("loginMsg", "Signing in…");
+        const { error } = await sb.auth.signInWithPassword({
+          email: $("loginEmail").value.trim(),
+          password: $("loginPassword").value,
+        });
+        $("loginBtn").disabled = false;
+        if (error) {
+          setMsg("loginMsg", "Wrong email or password.", "error");
+          return;
+        }
+        $("loginPassword").value = "";
+        setMsg("loginMsg", "");
+      };
+      $("signOut").onclick = async () => {
+        await sb.auth.signOut();
+      };
+
+      let signedInOnce = false;
+      async function onSession(session) {
+        if (session) {
+          showView(true);
+          if (!signedInOnce) {
+            signedInOnce = true;
+            await loadAll();
+          }
+        } else {
+          signedInOnce = false;
+          categories = videos = enquiries = [];
+          showView(false);
+        }
+      }
+      if (sb) {
+        sb.auth.getSession().then(({ data }) => onSession(data.session));
+        sb.auth.onAuthStateChange((_event, session) => {
+          setTimeout(() => onSession(session), 0);
+        });
+      } else {
+        showView(false);
+        setMsg("loginMsg", "Site is not configured yet (see config.js).", "error");
+      }
+
+      /* ---------- data ---------- */
+      async function loadAll() {
+        const [c, v, q] = await Promise.all([
+          sb.from("categories").select("*").order("sort_order", { ascending: true }),
+          sb.from("videos").select("*").order("created_at", { ascending: false }),
+          sb.from("enquiries").select("*").order("created_at", { ascending: false }),
+        ]);
+        const failed = c.error || v.error || q.error;
+        loadError = failed ? failed.message || "unknown error" : "";
+        if (failed) {
+          console.error(failed);
+          toast("Could not load data: " + loadError, true);
+        }
+        categories = c.data || [];
+        videos = v.data || [];
+        enquiries = q.data || [];
+        renderCategories();
+        renderVideos();
+        renderEnquiries();
+        if (!$("videoForm").hidden) {
+          fillCategorySelect($("vCategory").value);
+          if (categories.length) setMsg("videoMsg", "");
+        }
+      }
+      const catName = (id) =>
+        (categories.find((c) => String(c.id) === String(id)) || {}).name || "";
+
+      /* ---------- videos ---------- */
+      function fillCategorySelect(selected) {
+        $("vCategory").innerHTML =
+          `<option value="">Choose a category…</option>` +
+          categories
+            .map(
+              (c) =>
+                `<option value="${esc(c.id)}" ${String(c.id) === String(selected) ? "selected" : ""}>${esc(c.name)}</option>`,
+            )
+            .join("");
+      }
+      function openVideoForm(video) {
+        editingId = video ? video.id : null;
+        $("videoForm").reset();
+        $("vPublish").checked = video ? !!video.is_published : true;
+        fillCategorySelect(video ? video.category_id : "");
+        $("vTitle").value = video ? video.title : "";
+        $("vLocation").value = video ? video.location || "" : "";
+        $("videoFormTitle").textContent = video ? "Edit video" : "Add video";
+        $("vFileLabel").textContent = video ? "Replace video (optional)" : "Video file *";
+        $("vFileHint").textContent =
+          `MP4 is best. Max ${MAX_MB} MB per video. Compress bigger files first.`;
+        $("saveVideoBtn").textContent = video ? "Save changes" : "Upload";
+        $("uploadBox").hidden = true;
+        setMsg("videoMsg", "");
+        $("videoForm").hidden = false;
+        $("addVideoBtn").hidden = true;
+        $("vTitle").focus();
+        $("videoForm").scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!categories.length)
+          setMsg(
+            "videoMsg",
+            loadError
+              ? "Could not load categories: " + loadError
+              : "Add a category first (Categories tab).",
+            "error",
+          );
+      }
+      function closeVideoForm() {
+        $("videoForm").hidden = true;
+        $("addVideoBtn").hidden = false;
+        editingId = null;
+      }
+      $("addVideoBtn").onclick = () => openVideoForm(null);
+      $("cancelVideoBtn").onclick = () => {
+        if (abortUpload) abortUpload();
+        closeVideoForm();
+      };
+
+      $("vFile").onchange = () => {
+        const f = $("vFile").files[0];
+        if (!f) return;
+        const mb = f.size / 1048576;
+        if (mb > MAX_MB) {
+          setMsg(
+            "videoMsg",
+            `This video is ${mb.toFixed(0)} MB. The limit is ${MAX_MB} MB. Compress it and try again.`,
+            "error",
+          );
+        } else if (!isVideo(f)) {
+          setMsg("videoMsg", "That does not look like a video file.", "error");
+        } else if (!PLAYABLE_EXTS.includes(extOf(f))) {
+          $("vPublish").checked = false;
+          setMsg(
+            "videoMsg",
+            `.${extOf(f).toUpperCase()} videos usually do not play in web browsers. It will upload hidden. Check the preview, and convert to MP4 if it does not play.`,
+          );
+        } else if (extOf(f) === "mov") {
+          setMsg(
+            "videoMsg",
+            "iPhone .MOV files may not play on every phone or browser. MP4 (H.264) is safer.",
+          );
+        } else {
+          setMsg("videoMsg", "");
+        }
+      };
+
+      const extFor = (file) => extOf(file) || "mp4";
+      function pathFromUrl(url) {
+        const m = String(url || "").match(
+          new RegExp("/storage/v1/object/public/" + BUCKET + "/(.+?)(?:\\?|#|$)"),
+        );
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+      async function removeFile(url) {
+        const path = pathFromUrl(url);
+        if (path) await sb.storage.from(BUCKET).remove([path]);
+      }
+
+      async function uploadFile(path, file, onProgress) {
+        const {
+          data: { session },
+        } = await sb.auth.getSession();
+        if (!session) throw new Error("Please sign in again.");
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          const body = new FormData();
+          body.append("cacheControl", "3600");
+          body.append("", file);
+          xhr.open("POST", `${SUPABASE_URL}/storage/v1/object/${BUCKET}/${path}`);
+          xhr.setRequestHeader("Authorization", `Bearer ${session.access_token}`);
+          xhr.setRequestHeader("apikey", SUPABASE_ANON_KEY);
+          xhr.setRequestHeader("x-upsert", "false");
+          xhr.upload.onprogress = (e) => {
+            if (e.lengthComputable) onProgress(e.loaded / e.total);
+          };
+          xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) return resolve();
+            let m = "Upload failed.";
+            try {
+              m = JSON.parse(xhr.responseText).message || m;
+            } catch (e) {}
+            reject(new Error(m));
+          };
+          xhr.onerror = () =>
+            reject(new Error("Network problem. Check your connection and try again."));
+          xhr.onabort = () => reject(new Error("Upload cancelled."));
+          abortUpload = () => xhr.abort();
+          xhr.send(body);
+        });
+      }
+
+      $("videoForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const file = $("vFile").files[0];
+        const title = $("vTitle").value.trim();
+        const category = $("vCategory").value;
+        if (!title || !category) {
+          setMsg("videoMsg", "Please add a title and choose a category.", "error");
+          return;
+        }
+        if (!editingId && !file) {
+          setMsg("videoMsg", "Please choose a video file.", "error");
+          return;
+        }
+        if (file) {
+          if (!isVideo(file)) {
+            setMsg("videoMsg", "Please choose a video file.", "error");
+            return;
+          }
+          if (file.size / 1048576 > MAX_MB) {
+            setMsg(
+              "videoMsg",
+              `This video is over ${MAX_MB} MB. Compress it and try again.`,
+              "error",
+            );
+            return;
+          }
+        }
+        $("saveVideoBtn").disabled = true;
+        setMsg("videoMsg", "");
+        let uploadedPath = null;
+        try {
+          const row = {
+            title,
+            category_id: category,
+            location: $("vLocation").value.trim() || null,
+            is_published: $("vPublish").checked,
+          };
+          if (file) {
+            uploadedPath = `${crypto.randomUUID()}.${extFor(file)}`;
+            $("uploadBox").hidden = false;
+            $("uploadBar").style.width = "0%";
+            $("uploadText").textContent = "Uploading… 0%";
+            await uploadFile(uploadedPath, file, (p) => {
+              const pct = Math.round(p * 100);
+              $("uploadBar").style.width = pct + "%";
+              $("uploadText").textContent = `Uploading… ${pct}%. Keep this page open.`;
+            });
+            row.video_url = sb.storage.from(BUCKET).getPublicUrl(uploadedPath).data.publicUrl;
+            row.r2_key = null;
+          }
+          if (editingId) {
+            const old = videos.find((v) => v.id === editingId);
+            const { error } = await sb.from("videos").update(row).eq("id", editingId);
+            if (error) throw error;
+            if (file && old) await removeFile(old.video_url);
+          } else {
+            const { error } = await sb.from("videos").insert(row);
+            if (error) throw error;
+          }
+          uploadedPath = null;
+          toast(editingId ? "Saved." : "Video uploaded.");
+          closeVideoForm();
+          await loadAll();
+        } catch (err) {
+          console.error(err);
+          if (uploadedPath) sb.storage.from(BUCKET).remove([uploadedPath]);
+          setMsg("videoMsg", errText(err), "error");
+        } finally {
+          abortUpload = null;
+          $("saveVideoBtn").disabled = false;
+        }
+      };
+
+      function renderVideos() {
+        const list = $("videoList");
+        if (!videos.length) {
+          list.innerHTML = `<div class="empty">No videos yet. Tap “Add video” to upload your first one.</div>`;
+          return;
+        }
+        list.innerHTML = videos
+          .map((v) => {
+            const url = esc(v.video_url);
+            const cat = catName(v.category_id);
+            return `<article class="item" data-id="${esc(v.id)}">
+              <video preload="metadata" controls playsinline src="${url}#t=0.1"></video>
+              <h3>${esc(v.title)}</h3>
+              <p class="meta">${cat ? esc(cat) : "No category"}${v.location ? " · " + esc(v.location) : ""}</p>
+              <div class="actions">
+                <span class="pill ${v.is_published ? "live" : "hidden"}">${v.is_published ? "Live" : "Hidden"}</span>
+                <label class="switch"><input type="checkbox" data-act="pub" ${v.is_published ? "checked" : ""} /> Show on site</label>
+              </div>
+              <div class="actions">
+                <button class="btn outline small" data-act="edit" type="button">Edit</button>
+                <button class="btn danger small" data-act="del" type="button">Delete</button>
+              </div>
+            </article>`;
+          })
+          .join("");
+      }
+      $("videoList").onclick = async (e) => {
+        const btn = e.target.closest("[data-act]");
+        if (!btn) return;
+        const card = btn.closest("[data-id]");
+        const v = videos.find((x) => String(x.id) === card.dataset.id);
+        if (!v) return;
+        if (btn.dataset.act === "edit") {
+          openVideoForm(v);
+        } else if (btn.dataset.act === "del") {
+          if (!confirm(`Delete “${v.title}”? This cannot be undone.`)) return;
+          const { error } = await sb.from("videos").delete().eq("id", v.id);
+          if (error) return toast(errText(error), true);
+          try {
+            await removeFile(v.video_url);
+          } catch (err) {
+            console.error(err);
+          }
+          toast("Deleted.");
+          await loadAll();
+        }
+      };
+      $("videoList").onchange = async (e) => {
+        const box = e.target.closest('[data-act="pub"]');
+        if (!box) return;
+        const id = box.closest("[data-id]").dataset.id;
+        const { error } = await sb
+          .from("videos")
+          .update({ is_published: box.checked })
+          .eq("id", id);
+        if (error) {
+          box.checked = !box.checked;
+          return toast(errText(error), true);
+        }
+        toast(box.checked ? "Now visible on the site." : "Hidden from the site.");
+        await loadAll();
+      };
+
+      /* ---------- categories ---------- */
+      function renderCategories() {
+        const list = $("catList");
+        if (!categories.length) {
+          list.innerHTML = loadError
+            ? `<div class="empty">Could not load categories: ${esc(loadError)}</div>`
+            : `<div class="empty">No categories yet. Add your first ones above.</div>`;
+          return;
+        }
+        list.innerHTML = categories
+          .map(
+            (c, i) => `<article class="item" data-id="${esc(c.id)}">
+              <h3>${esc(c.name)}</h3>
+              <div class="actions">
+                <button class="btn outline small" data-act="up" type="button" ${i === 0 ? "disabled" : ""} aria-label="Move up">↑</button>
+                <button class="btn outline small" data-act="down" type="button" ${i === categories.length - 1 ? "disabled" : ""} aria-label="Move down">↓</button>
+                <button class="btn outline small" data-act="rename" type="button">Rename</button>
+                <button class="btn danger small" data-act="del" type="button">Delete</button>
+              </div>
+            </article>`,
+          )
+          .join("");
+      }
+      $("catForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const names = [
+          ...new Set(
+            $("catNames")
+              .value.split("\n")
+              .map((s) => s.trim())
+              .filter(Boolean),
+          ),
+        ];
+        if (!names.length) return setMsg("catMsg", "Type at least one name.", "error");
+        const start = categories.length
+          ? Math.max(...categories.map((c) => c.sort_order || 0)) + 1
+          : 1;
+        $("catAddBtn").disabled = true;
+        const { error } = await sb
+          .from("categories")
+          .insert(names.map((name, i) => ({ name, sort_order: start + i })));
+        $("catAddBtn").disabled = false;
+        if (error) {
+          console.error(error);
+          return setMsg(
+            "catMsg",
+            /duplicate|unique/i.test(error.message)
+              ? "One of those categories already exists."
+              : errText(error),
+            "error",
+          );
+        }
+        $("catNames").value = "";
+        setMsg("catMsg", "");
+        toast(`${names.length} categor${names.length === 1 ? "y" : "ies"} added.`);
+        await loadAll();
+      };
+      $("catList").onclick = async (e) => {
+        const btn = e.target.closest("[data-act]");
+        if (!btn || btn.disabled) return;
+        const id = btn.closest("[data-id]").dataset.id;
+        const idx = categories.findIndex((c) => String(c.id) === id);
+        const c = categories[idx];
+        if (!c) return;
+        const act = btn.dataset.act;
+        if (act === "up" || act === "down") {
+          const j = act === "up" ? idx - 1 : idx + 1;
+          const order = categories.slice();
+          [order[idx], order[j]] = [order[j], order[idx]];
+          const { error } = await sb
+            .from("categories")
+            .upsert(order.map((x, i) => ({ id: x.id, name: x.name, sort_order: i + 1 })));
+          if (error) return toast(errText(error), true);
+          await loadAll();
+        } else if (act === "rename") {
+          const name = (prompt("New name", c.name) || "").trim();
+          if (!name || name === c.name) return;
+          const { error } = await sb.from("categories").update({ name }).eq("id", c.id);
+          if (error) return toast(errText(error), true);
+          toast("Renamed.");
+          await loadAll();
+        } else if (act === "del") {
+          const used = videos.filter((v) => String(v.category_id) === id).length;
+          const warn = used
+            ? ` ${used} video${used === 1 ? "" : "s"} will have no category.`
+            : "";
+          if (!confirm(`Delete “${c.name}”?${warn}`)) return;
+          const { error } = await sb.from("categories").delete().eq("id", c.id);
+          if (error) return toast(errText(error), true);
+          toast("Deleted.");
+          await loadAll();
+        }
+      };
+
+      /* ---------- enquiries ---------- */
+      function waLink(phone) {
+        let d = String(phone || "").replace(/\D/g, "");
+        if (d.length === 11 && d.startsWith("0")) d = d.slice(1);
+        if (d.length === 10) d = "91" + d; // assume India for 10-digit numbers
+        return d ? `https://wa.me/${d}` : "";
+      }
+      function renderEnquiries() {
+        const fresh = enquiries.filter((q) => q.status === "new").length;
+        $("newBadge").textContent = fresh;
+        $("newBadge").hidden = !fresh;
+        const rows = enquiries.filter((q) => enqFilter === "all" || q.status === enqFilter);
+        const list = $("enqList");
+        if (!rows.length) {
+          list.innerHTML = `<div class="empty">No ${enqFilter === "all" ? "" : esc(enqFilter) + " "}enquiries.</div>`;
+          return;
+        }
+        list.innerHTML = rows
+          .map((q) => {
+            const when = new Date(q.created_at).toLocaleString([], {
+              day: "numeric",
+              month: "short",
+              hour: "2-digit",
+              minute: "2-digit",
+            });
+            const wa = waLink(q.phone);
+            return `<article class="item" data-id="${esc(q.id)}">
+              <h3>${esc(q.name)}</h3>
+              <p class="meta">${esc(when)}</p>
+              <div class="contact-links">
+                ${q.phone ? `<a class="btn small" href="tel:${esc(String(q.phone).replace(/[^\d+]/g, ""))}">Call</a>` : ""}
+                ${wa ? `<a class="btn outline small" href="${esc(wa)}" target="_blank" rel="noopener">WhatsApp</a>` : ""}
+                ${q.email ? `<a class="btn outline small" href="mailto:${esc(q.email)}">Email</a>` : ""}
+              </div>
+              ${q.phone ? `<p class="meta">${esc(q.phone)}</p>` : ""}
+              ${q.email ? `<p class="meta">${esc(q.email)}</p>` : ""}
+              ${q.message ? `<div class="msg-body">${esc(q.message)}</div>` : ""}
+              <div class="field" style="margin-bottom: 0">
+                <label for="st-${esc(q.id)}">Status</label>
+                <select id="st-${esc(q.id)}" data-act="status">
+                  ${["new", "contacted", "closed"]
+                    .map(
+                      (s) =>
+                        `<option value="${s}" ${q.status === s ? "selected" : ""}>${s[0].toUpperCase() + s.slice(1)}</option>`,
+                    )
+                    .join("")}
+                </select>
+              </div>
+            </article>`;
+          })
+          .join("");
+      }
+      $("enqFilter").onclick = (e) => {
+        const b = e.target.closest("[data-f]");
+        if (!b) return;
+        enqFilter = b.dataset.f;
+        document
+          .querySelectorAll("#enqFilter button")
+          .forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        renderEnquiries();
+      };
+      $("enqList").onchange = async (e) => {
+        const sel = e.target.closest('[data-act="status"]');
+        if (!sel) return;
+        const id = sel.closest("[data-id]").dataset.id;
+        const { error } = await sb.from("enquiries").update({ status: sel.value }).eq("id", id);
+        if (error) return toast(errText(error), true);
+        const q = enquiries.find((x) => String(x.id) === id);
+        if (q) q.status = sel.value;
+        toast("Status updated.");
+        renderEnquiries();
+      };
+    </script>
+  </body>
+</html>

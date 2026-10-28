@@ -1,0 +1,2546 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="#06192a" name="theme-color" />
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <title>
+      THEBUSINESSROOM | Strategic Content Production &amp; Management
+    </title>
+    <meta
+      content="THEBUSINESSROOM — Your Friendly Neighborhood Production Partner. Strategic content production, cinematic storytelling, and social media management."
+      name="description"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=Cinzel:wght@500;600&family=Jost:wght@300;400;500&family=Syne:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #06192a;
+        --deep: #03111e;
+        --gold: #e8c17c;
+        --muted: #b4c0c9;
+        --line: rgba(232, 193, 124, 0.22);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--deep);
+        color: #f5f3ee;
+        font-family: 'Manrope', sans-serif;
+        line-height: 1.55;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+      button {
+        cursor: pointer;
+      }
+      .wrap {
+        width: min(1200px, 92%);
+        margin: auto;
+      }
+      .top {
+        position: sticky;
+        top: 0;
+        z-index: 30;
+        background: #041321ed;
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 15px 0;
+      }
+      .wordmark {
+        font-size: 17px;
+        letter-spacing: 0.04em;
+        font-weight: 600;
+      }
+      .wordmark small {
+        display: block;
+        font-size: 8px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        color: var(--gold);
+      }
+      .links {
+        display: flex;
+        gap: 27px;
+        font-size: 13px;
+      }
+      .links a:hover {
+        color: var(--gold);
+      }
+      .btn {
+        border: 1px solid var(--gold);
+        border-radius: 999px;
+        padding: 12px 20px;
+        background: var(--gold);
+        color: #081521;
+        font-weight: 700;
+        display: inline-block;
+      }
+      .btn.outline {
+        background: transparent;
+        color: var(--gold);
+      }
+      .btn:hover {
+        filter: brightness(1.12);
+      }
+      .hero {
+        background: radial-gradient(
+            ellipse at 75% 25%,
+            #173a56 0,
+            transparent 45%
+          ),
+          linear-gradient(130deg, #04121f, #071d31);
+      }
+      .hero-grid {
+        min-height: 650px;
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        align-items: center;
+        gap: 45px;
+        padding: 75px 0;
+      }
+      .eyebrow {
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+      .hero h1 {
+        font-size: clamp(42px, 5.6vw, 76px);
+        line-height: 1.04;
+        letter-spacing: -0.055em;
+        margin: 20px 0;
+      }
+      .gold {
+        color: var(--gold);
+      }
+      .lead {
+        color: #cad2d9;
+        font-size: 17px;
+        max-width: 620px;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .hero-art {
+        position: relative;
+      }
+      .hero-art img {
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        box-shadow: 0 30px 80px #0009;
+      }
+      .quote {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-style: italic;
+        color: var(--gold);
+        font-size: 20px;
+        margin-top: 18px;
+        text-align: center;
+      }
+      .section {
+        padding: 90px 0;
+      }
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 32px;
+      }
+      .section h2 {
+        font-size: clamp(30px, 4vw, 48px);
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+        margin: 12px 0;
+      }
+      .sub {
+        color: var(--muted);
+        max-width: 630px;
+      }
+      .filters {
+        display: flex;
+        gap: 9px;
+        overflow-x: auto;
+        padding: 0 0 16px;
+        scrollbar-color: var(--gold) transparent;
+      }
+      .filter {
+        white-space: nowrap;
+        background: #0b253a;
+        border: 1px solid #355069;
+        color: #d6dce0;
+        border-radius: 30px;
+        padding: 9px 15px;
+        font-size: 12px;
+      }
+      .filter.active,
+      .filter:hover {
+        background: var(--gold);
+        color: #06192a;
+        border-color: var(--gold);
+      }
+      .tools {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin: 18px 0 26px;
+      }
+      .search {
+        border: 1px solid #355069;
+        background: #0a2134;
+        color: white;
+        padding: 12px 16px;
+        border-radius: 10px;
+        width: min(350px, 100%);
+      }
+      .count {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .project {
+        border: 1px solid var(--line);
+        background: #0b2438;
+        border-radius: 15px;
+        overflow: hidden;
+      }
+      .poster {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: radial-gradient(circle at 65% 20%, #365371, #08192b 72%);
+      }
+      .poster img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        opacity: 0.75;
+      }
+      .play {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        border: 1px solid #ffffff88;
+        background: #041321bb;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        font-size: 22px;
+      }
+      .project-body {
+        padding: 18px;
+      }
+      .tag {
+        color: var(--gold);
+        text-transform: uppercase;
+        letter-spacing: 0.13em;
+        font-size: 10px;
+      }
+      .project h3 {
+        font-size: 19px;
+        margin: 8px 0;
+      }
+      .project p {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 0 0 14px;
+      }
+      .project a,
+      .project button {
+        background: none;
+        border: 0;
+        color: var(--gold);
+        font-weight: 650;
+        padding: 0;
+      }
+      .empty {
+        padding: 45px;
+        border: 1px dashed #607080;
+        border-radius: 15px;
+        color: var(--muted);
+        grid-column: 1/-1;
+        text-align: center;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .feature {
+        border: 1px solid var(--line);
+        padding: 28px;
+        border-radius: 15px;
+        background: #0a2134;
+      }
+      .feature .num {
+        color: var(--gold);
+        font-size: 12px;
+      }
+      .feature h3 {
+        font-size: 20px;
+        margin: 18px 0 8px;
+      }
+      .feature p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .band {
+        background: #e9e2d6;
+        color: #0b2134;
+      }
+      .band .sub {
+        color: #526171;
+      }
+      .band .feature {
+        background: #f8f4ec;
+        border: 1px solid #d7cab6;
+      }
+      .band .feature p {
+        color: #536272;
+      }
+      .band .feature .num {
+        color: #94662c;
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .step {
+        padding: 20px;
+        border-top: 1px solid var(--gold);
+      }
+      .step strong {
+        display: block;
+        color: var(--gold);
+        font-size: 28px;
+      }
+      .step p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .cta {
+        text-align: center;
+        background: radial-gradient(circle at center, #153c56, #06192a 65%);
+        padding: 100px 0;
+      }
+      .cta h2 {
+        font-size: clamp(32px, 4.8vw, 58px);
+        margin: 12px auto;
+        max-width: 800px;
+        line-height: 1.1;
+      }
+      .cta p {
+        color: var(--muted);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 60px 0 30px;
+        color: #aebbc6;
+        font-size: 14px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px 40px;
+        align-items: start;
+        text-align: left;
+      }
+      .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: #000c;
+        display: none;
+        place-items: center;
+        z-index: 90;
+        padding: 18px;
+      }
+      .modal.open {
+        display: grid;
+      }
+      .dialog {
+        width: min(640px, 100%);
+        max-height: 90vh;
+        overflow: auto;
+        background: #0c263b;
+        border: 1px solid #6b603e;
+        border-radius: 20px;
+        padding: 26px;
+      }
+      .dialog h2 {
+        margin-top: 0;
+      }
+      .field {
+        display: grid;
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .field label {
+        font-size: 12px;
+        color: var(--gold);
+      }
+      .field input,
+      .field select,
+      .field textarea {
+        background: #041828;
+        color: white;
+        border: 1px solid #4a6070;
+        border-radius: 9px;
+        padding: 11px;
+        width: 100%;
+      }
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .dialog-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .close {
+        background: transparent;
+        border: 0;
+        color: white;
+        font-size: 25px;
+      }
+      .notice {
+        background: #17384d;
+        border-left: 3px solid var(--gold);
+        padding: 12px;
+        font-size: 12px;
+        color: #d3dce3;
+      }
+      video {
+        width: 100%;
+        max-height: 65vh;
+      }
+      .pill {
+        display: inline-block;
+        font-size: 11px;
+        border: 1px solid var(--line);
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: var(--gold);
+      }
+      @media (max-width: 850px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          padding: 50px 0;
+        }
+        .hero-art {
+          max-width: 560px;
+        }
+        .links {
+          display: none;
+        }
+        .gallery,
+        .feature-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .steps {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 560px) {
+        .gallery,
+        .feature-grid,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .section {
+          padding: 60px 0;
+        }
+        .poster {
+          height: 220px;
+        }
+        .hero h1 {
+          font-size: 44px;
+        }
+        .section-head {
+          display: block;
+        }
+        .nav {
+          padding: 13px 0;
+        }
+        .wordmark {
+          font-size: 14px;
+        }
+      }
+    </style>
+    <style>
+      .founder-layout {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 52px;
+        align-items: center;
+      }
+      .founder-portrait {
+        width: 100%;
+        max-height: 470px;
+        object-fit: cover;
+        object-position: center 23%;
+        border-radius: 16px;
+        border: 1px solid var(--line);
+      }
+      .founder-copy p {
+        color: var(--muted);
+        font-size: 15px;
+      }
+      .founder-name {
+        font-size: 36px;
+        margin: 5px 0;
+        color: #f8f5ef;
+      }
+      .founder-contact {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .footer-col a {
+        color: var(--gold);
+        overflow-wrap: anywhere;
+      }
+      .footer-col a:hover {
+        text-decoration: underline;
+      }
+      .footer-col span {
+        color: var(--muted);
+      }
+      @media (max-width: 780px) {
+        .founder-layout {
+          grid-template-columns: 1fr;
+        }
+        .founder-portrait {
+          max-width: 400px;
+          max-height: 470px;
+        }
+      }
+    </style>
+    <style>
+      /* THEBUSINESSROOM · refined luxury responsive edition */
+      :root {
+        --gold: #e6bf7c;
+        --gold-bright: #ffe0a5;
+        --navy: #071b2d;
+        --deep: #030d17;
+        --line: rgba(231, 192, 125, 0.18);
+      }
+      html {
+        scroll-padding-top: 76px;
+      }
+      body {
+        background: #030e19;
+        background-image: radial-gradient(
+          ellipse at 100% 0%,
+          rgba(24, 56, 80, 0.24),
+          transparent 48%
+        );
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      ::selection {
+        background: #e6bf7c;
+        color: #071b2d;
+      }
+      .wrap {
+        width: min(1160px, calc(100% - 48px));
+      }
+      .top {
+        background: rgba(3, 14, 25, 0.83);
+        border-bottom: 1px solid rgba(230, 191, 124, 0.12);
+        transition:
+          background 0.3s,
+          box-shadow 0.3s;
+      }
+      .top.scrolled {
+        background: rgba(3, 13, 23, 0.96);
+        box-shadow: 0 12px 35px #0006;
+      }
+      .nav {
+        min-height: 62px;
+        padding: 7px 0;
+        gap: 12px;
+      }
+      .wordmark {
+        font-size: 14px;
+        letter-spacing: 0.055em;
+        line-height: 1.15;
+        flex-shrink: 0;
+      }
+      .wordmark small {
+        font-size: 6.6px;
+        letter-spacing: 0.17em;
+        margin-top: 4px;
+      }
+      .links {
+        gap: clamp(12px, 1.7vw, 25px);
+        font-size: 11.5px;
+        align-items: center;
+      }
+      .links a {
+        position: relative;
+        padding: 12px 0;
+        transition: color 0.22s;
+      }
+      .links a:after {
+        content: "";
+        position: absolute;
+        bottom: 7px;
+        left: 0;
+        right: 100%;
+        height: 1px;
+        background: var(--gold);
+        transition: right 0.25s;
+      }
+      .links a:hover:after,
+      .links a.current:after {
+        right: 0;
+      }
+      .links a.current {
+        color: var(--gold);
+      }
+      .nav > .btn {
+        font-size: 11px;
+        padding: 9px 15px;
+        white-space: nowrap;
+      }
+      .btn {
+        transition:
+          transform 0.25s,
+          box-shadow 0.25s,
+          background 0.25s,
+          color 0.25s,
+          border-color 0.25s;
+      }
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 28px rgba(230, 191, 124, 0.22);
+        filter: none;
+      }
+      .btn.outline:hover {
+        background: rgba(230, 191, 124, 0.1);
+      }
+      a:focus-visible,
+      button:focus-visible,
+      input:focus-visible,
+      select:focus-visible,
+      textarea:focus-visible,
+      summary:focus-visible {
+        outline: 2px solid var(--gold-bright);
+        outline-offset: 4px;
+      }
+      .hero {
+        background: linear-gradient(to bottom, transparent 70%, #030e19),
+          radial-gradient(
+            ellipse at 72% 35%,
+            rgba(28, 65, 89, 0.62),
+            transparent 53%
+          ),
+          linear-gradient(135deg, #030c16, #071e31);
+      }
+      .hero-grid {
+        min-height: min(710px, 88svh);
+        padding: 76px 0;
+        gap: clamp(28px, 5vw, 70px);
+      }
+      .hero h1 {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: clamp(44px, 5.5vw, 75px);
+        font-weight: 600;
+        letter-spacing: -0.058em;
+      }
+      .hero-art img {
+        border: 1px solid rgba(230, 191, 124, 0.25);
+        border-radius: 12px;
+        box-shadow: 0 40px 90px #0009;
+        transition:
+          transform 0.65s,
+          box-shadow 0.65s;
+      }
+      .hero-art:hover img {
+        transform: translateY(-7px) scale(1.015);
+        box-shadow: 0 46px 110px #000c;
+      }
+      .quote {
+        font-size: clamp(16px, 1.8vw, 20px);
+      }
+      .section {
+        padding: clamp(70px, 8vw, 108px) 0;
+      }
+      .section h2 {
+        font-weight: 750;
+      }
+      .eyebrow {
+        letter-spacing: 0.22em;
+      }
+      .feature,
+      .project,
+      .step,
+      .founder-portrait {
+        transition:
+          transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+          border-color 0.3s,
+          box-shadow 0.35s,
+          background 0.35s;
+      }
+      .feature:hover,
+      .project:hover {
+        transform: translateY(-7px);
+        border-color: rgba(230, 191, 124, 0.72);
+        box-shadow: 0 20px 50px #0006;
+      }
+      .band .feature:hover {
+        box-shadow: 0 18px 35px rgba(20, 32, 45, 0.13);
+        border-color: #c49c61;
+      }
+      .step:hover {
+        transform: translateY(-4px);
+        border-top-color: var(--gold-bright);
+      }
+      .project {
+        isolation: isolate;
+      }
+      .poster {
+        overflow: hidden;
+      }
+      .poster img {
+        transition:
+          transform 0.55s,
+          opacity 0.35s;
+      }
+      .project:hover .poster img {
+        transform: scale(1.07);
+        opacity: 0.95;
+      }
+      .play {
+        transition:
+          transform 0.25s,
+          background 0.25s;
+      }
+      .project:hover .play {
+        transform: scale(1.14);
+        background: rgba(230, 191, 124, 0.92);
+        color: #06192a;
+      }
+      .project button:hover,
+      .footer-col a:hover {
+        color: var(--gold-bright);
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+      .filter {
+        transition:
+          background 0.25s,
+          border-color 0.25s,
+          transform 0.25s,
+          color 0.25s;
+      }
+      .filter:hover {
+        transform: translateY(-2px);
+      }
+      .search:focus {
+        border-color: var(--gold);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(230, 191, 124, 0.13);
+      }
+      .founder-portrait:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 50px #0005;
+      }
+      .footer-col a {
+        transition: color 0.25s;
+      }
+      .modal {
+        backdrop-filter: blur(9px);
+      }
+      .dialog {
+        box-shadow: 0 25px 90px #000a;
+      }
+      .menu-toggle {
+        display: none;
+        background: transparent;
+        border: 1px solid rgba(230, 191, 124, 0.35);
+        color: var(--gold);
+        border-radius: 9px;
+        width: 39px;
+        height: 37px;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        line-height: 1;
+        flex-shrink: 0;
+      }
+      /* Deliberately subtle entrance motion; content stays visible without JS */
+      .motion-ready .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+          opacity 0.65s ease,
+          transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+      .motion-ready .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (max-width: 1000px) {
+        .links {
+          gap: 12px;
+        }
+        .wordmark {
+          font-size: 12px;
+        }
+        .wordmark small {
+          font-size: 6px;
+        }
+        .nav > .btn {
+          padding: 8px 11px;
+        }
+      }
+      @media (max-width: 850px) {
+        .wrap {
+          width: min(100% - 36px, 680px);
+        }
+        .nav {
+          min-height: 60px;
+          flex-wrap: nowrap;
+        }
+        .menu-toggle {
+          display: flex;
+          order: 3;
+        }
+        .nav > .btn {
+          margin-left: auto;
+          order: 2;
+        }
+        .links {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          padding: 14px 22px 22px;
+          background: #061727;
+          border-bottom: 1px solid rgba(230, 191, 124, 0.3);
+          box-shadow: 0 20px 35px #0008;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0;
+          font-size: 14px;
+        }
+        .links.open {
+          display: flex;
+        }
+        .links a {
+          padding: 13px 5px;
+          border-bottom: 1px solid rgba(230, 191, 124, 0.12);
+        }
+        .links a:after {
+          display: none;
+        }
+        .hero-grid {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 38px;
+          padding: 64px 0;
+        }
+        .hero-art {
+          width: min(100%, 540px);
+          margin: auto;
+        }
+        .hero h1 {
+          font-size: clamp(42px, 8vw, 64px);
+        }
+        .gallery,
+        .feature-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .founder-layout {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .founder-portrait {
+          width: min(100%, 430px);
+          max-height: 500px;
+        }
+        .section-head {
+          align-items: start;
+        }
+        .steps {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 560px) {
+        .wrap {
+          width: calc(100% - 32px);
+        }
+        .nav {
+          min-height: 56px;
+          padding: 7px 0;
+          gap: 8px;
+        }
+        .wordmark {
+          font-size: 11px;
+          letter-spacing: 0.015em;
+        }
+        .wordmark small {
+          font-size: 5.6px;
+          letter-spacing: 0.07em;
+        }
+        .nav > .btn {
+          font-size: 10px;
+          padding: 8px 10px;
+        }
+        .menu-toggle {
+          width: 34px;
+          height: 34px;
+          font-size: 18px;
+        }
+        .hero-grid {
+          padding: 48px 0 52px;
+          gap: 30px;
+        }
+        .hero h1 {
+          font-size: clamp(37px, 10.6vw, 52px);
+          line-height: 1.06;
+          margin: 16px 0;
+        }
+        .lead {
+          font-size: 15px;
+        }
+        .eyebrow {
+          font-size: 9px;
+          letter-spacing: 0.15em;
+        }
+        .quote {
+          font-size: 17px;
+        }
+        .actions {
+          gap: 9px;
+        }
+        .actions .btn {
+          padding: 11px 15px;
+          font-size: 12px;
+        }
+        .section {
+          padding: 62px 0;
+        }
+        .section h2 {
+          font-size: clamp(30px, 9vw, 40px);
+        }
+        .section-head {
+          display: block;
+        }
+        .gallery,
+        .feature-grid,
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .poster {
+          height: 210px;
+        }
+        .feature {
+          padding: 22px;
+        }
+        .filters {
+          margin-right: -16px;
+          padding-right: 16px;
+          scroll-snap-type: x proximity;
+        }
+        .filter {
+          scroll-snap-align: start;
+        }
+        .tools {
+          align-items: stretch;
+        }
+        .search {
+          width: 100%;
+        }
+        .founder-name {
+          font-size: 30px;
+        }
+        .founder-copy p {
+          font-size: 14px;
+        }
+        .founder-contact .btn {
+          font-size: 12px;
+          padding: 10px 14px;
+        }
+        .cta {
+          padding: 75px 0;
+        }
+        .cta h2 {
+          font-size: clamp(33px, 9vw, 45px);
+        }
+        .dialog {
+          padding: 19px;
+          border-radius: 13px;
+        }
+        .hero-art img {
+          border-radius: 9px;
+        }
+      }
+      @media (max-width: 370px) {
+        .wordmark {
+          font-size: 10px;
+        }
+        .wordmark small {
+          font-size: 5px;
+        }
+        .nav > .btn {
+          font-size: 9px;
+          padding: 7px;
+        }
+        .menu-toggle {
+          width: 31px;
+          height: 32px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+        .motion-ready .reveal {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      /* Typography: Cinzel brand/nav, Cormorant Garamond headings */
+      .wordmark,
+      .links a {
+        font-family: 'Cinzel', serif;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+      h2,
+      h3,
+      .section h2,
+      .cta h2,
+      .dialog h2,
+      .founder-name,
+      .project h3,
+      .feature h3 {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+      }
+      /* Typography: Cormorant Garamond intro copy, Jost supporting copy */
+      .lead,
+      .sub,
+      .founder-copy p,
+      .cta p {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+      .feature p,
+      .step p,
+      .project p,
+      .hint {
+        font-family: 'Jost', sans-serif;
+        font-weight: 300;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+      }
+      @media (max-width: 560px) {
+        .lead,
+        .sub,
+        .founder-copy p,
+        .cta p {
+          font-size: 17px;
+        }
+      }
+      /* Typography: buttons match the Cinzel nav */
+      .btn,
+      .filter,
+      .project button {
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+      /* Typography: section labels, step numbers and footer */
+      .eyebrow,
+      .feature .num,
+      .tag,
+      .pill {
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+      }
+      .step strong {
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+        font-variant-numeric: lining-nums;
+      }
+      footer,
+      .count,
+      .field label,
+      .notice {
+        font-family: 'Jost', sans-serif;
+        font-weight: 400;
+      }
+      footer strong {
+        font-weight: 500;
+      }
+      /* Typography: Syne headings, Cormorant italic accents, Jost light paragraphs */
+      h1,
+      h2,
+      h3,
+      .founder-name,
+      .hero h1,
+      .section h2,
+      .cta h2,
+      .dialog h2,
+      .project h3,
+      .feature h3 {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      h1 .gold,
+      h2 .gold,
+      h3 .gold,
+      .founder-name .gold {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-weight: 600;
+      }
+      .lead,
+      .sub,
+      .founder-copy p,
+      .cta p:not(.quote),
+      .feature p,
+      .step p,
+      .project p {
+        font-family: 'Jost', sans-serif;
+        font-weight: 300;
+      }
+      .hero h1 .gold {
+        white-space: nowrap;
+      }
+      /* Hero: fluid sizing from phones to large desktops */
+      .hero-grid {
+        min-height: calc(100svh - 62px);
+        padding: clamp(40px, 6vw, 76px) 0;
+        gap: clamp(28px, 5vw, 70px);
+      }
+      .hero h1 {
+        font-size: clamp(34px, 4.2vw, 58px);
+        line-height: 1.08;
+        margin: 16px 0 20px;
+      }
+      .hero .lead {
+        font-size: clamp(16px, 1.3vw, 19px);
+        line-height: 1.65;
+        max-width: 34em;
+      }
+      @media (max-width: 850px) {
+        .hero-grid {
+          padding: 48px 0 56px;
+          gap: 36px;
+        }
+        .hero h1 {
+          font-size: clamp(36px, 8vw, 56px);
+        }
+        .hero .lead {
+          font-size: 17px;
+        }
+      }
+      @media (max-width: 560px) {
+        .hero-grid {
+          padding: 36px 0 44px;
+          gap: 28px;
+        }
+        .hero h1 {
+          font-size: clamp(28px, 8.6vw, 40px);
+          line-height: 1.1;
+        }
+        .hero .lead {
+          font-size: 16px;
+        }
+        .hero .actions .btn {
+          flex: 1 1 auto;
+          text-align: center;
+        }
+      }
+      @media (max-width: 700px) {
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+      /* Founder: sticky portrait on desktop, no gap before the CTA */
+      #founder {
+        padding-bottom: clamp(56px, 7vw, 96px);
+      }
+      #founder .wrap > .eyebrow {
+        margin-bottom: 28px;
+      }
+      .founder-layout {
+        align-items: start;
+      }
+      .founder-copy p {
+        font-size: 17px;
+        line-height: 1.75;
+      }
+      .founder-portrait {
+        max-height: 520px;
+      }
+      @media (min-width: 851px) {
+        .founder-layout {
+          grid-template-columns: minmax(280px, 380px) 1fr;
+          gap: clamp(40px, 5vw, 64px);
+        }
+        .founder-layout > div:first-child {
+          position: sticky;
+          top: 90px;
+        }
+      }
+      @media (max-width: 560px) {
+        .founder-copy p {
+          font-size: 16px;
+        }
+      }
+      /* Footer: brand column, headings and bottom row */
+      .footer-brand {
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+      }
+      .footer-heading {
+        margin: 0;
+        font-family: 'Cinzel', serif;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
+      .footer-brand + span + .footer-heading {
+        margin-top: 16px;
+      }
+      .footer-bottom {
+        margin-top: 40px;
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+        text-align: center;
+        color: var(--muted);
+      }
+      /* Motion: staggered card reveal and hover glow */
+      .motion-ready .feature.reveal,
+      .motion-ready .step.reveal {
+        transform: translateY(30px);
+        transition:
+          opacity 0.7s ease-out,
+          transform 0.7s ease-out;
+      }
+      .motion-ready .feature.reveal.visible,
+      .motion-ready .step.reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .feature,
+      .step {
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease,
+          background 0.35s ease;
+      }
+      .step strong {
+        transition: color 0.35s ease;
+      }
+      .feature:hover,
+      .band .feature:hover,
+      .step:hover {
+        border-color: var(--gold);
+        box-shadow:
+          0 0 0 1px rgba(230, 191, 124, 0.4),
+          0 18px 45px rgba(230, 191, 124, 0.15);
+        transform: translateY(-6px);
+      }
+      .step:hover strong {
+        color: var(--gold-bright);
+      }
+      /* Credential: certificate image with caption */
+      .credential-section {
+        padding: clamp(48px, 6vw, 80px) 0;
+      }
+      .credential {
+        margin: 0;
+        text-align: center;
+      }
+      .credential a {
+        display: block;
+        width: min(100%, 440px);
+        margin: 0 auto;
+      }
+      .credential img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        box-shadow: 0 24px 60px #0007;
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+      .credential a:hover img {
+        transform: translateY(-4px);
+        box-shadow: 0 30px 70px #000a;
+      }
+      .credential figcaption {
+        margin-top: 18px;
+        font-family: 'Jost', sans-serif;
+        font-weight: 300;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+      }
+      /* Portfolio from Supabase: inline video cards and load more */
+      .poster {
+        height: auto;
+        aspect-ratio: 4 / 5;
+      }
+      .poster video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #000;
+      }
+      .load-more {
+        margin-top: 28px;
+        text-align: center;
+      }
+      /* Hero logo card: gentle float and a slow gold sheen */
+      .hero-art img {
+        display: block;
+      }
+      .hero-art {
+        animation: tbr-float 6s ease-in-out infinite;
+      }
+      .hero-art::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 12px;
+        pointer-events: none;
+        background: linear-gradient(
+          110deg,
+          transparent 35%,
+          rgba(255, 224, 165, 0.16) 50%,
+          transparent 65%
+        );
+        background-size: 250% 100%;
+        animation: tbr-sheen 7s ease-in-out infinite;
+      }
+      @keyframes tbr-float {
+        0%,
+        100% {
+          translate: 0 0;
+        }
+        50% {
+          translate: 0 -12px;
+        }
+      }
+      @keyframes tbr-sheen {
+        0% {
+          background-position: 160% 0;
+        }
+        60%,
+        100% {
+          background-position: -60% 0;
+        }
+      }
+      @media (max-width: 560px) {
+        .hero-art::after {
+          border-radius: 9px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hero-art,
+        .hero-art::after {
+          animation: none;
+        }
+      }
+      /* Header logo next to the wordmark */
+      .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .brand-mark {
+        display: block;
+        width: 40px;
+        height: 40px;
+        flex: none;
+      }
+      .brand-text {
+        display: block;
+      }
+      @media (max-width: 560px) {
+        .wordmark {
+          gap: 8px;
+        }
+        .brand-mark {
+          width: 32px;
+          height: 32px;
+        }
+      }
+      @media (max-width: 480px) {
+        .brand-text small {
+          display: none;
+        }
+      }
+      /* Enquiry modal: split panel, chips and success state */
+      @keyframes enq-in {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.97);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes enq-draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+      .dialog.enq {
+        position: relative;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        width: min(980px, 100%);
+        max-height: min(92svh, 780px);
+        padding: 0;
+        overflow: hidden;
+        border-radius: 24px;
+        border: 1px solid rgba(230, 191, 124, 0.35);
+        background: #0a2134;
+        animation: enq-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      }
+      .enq-side {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 44px 36px 36px;
+        background:
+          radial-gradient(120% 80% at 0% 0%, rgba(230, 191, 124, 0.2), transparent 55%),
+          linear-gradient(160deg, #0d2c44, #06192a);
+        border-right: 1px solid rgba(230, 191, 124, 0.22);
+      }
+      .enq-mark {
+        display: block;
+        width: 52px;
+        height: 52px;
+      }
+      .enq-side h2 {
+        margin: 8px 0 0;
+        font-size: clamp(26px, 3vw, 34px);
+        line-height: 1.1;
+      }
+      .enq-side p {
+        margin: 0;
+        color: var(--muted);
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+      .enq-contact {
+        list-style: none;
+        margin: auto 0 0;
+        padding: 20px 0 0;
+        display: grid;
+        gap: 10px;
+        border-top: 1px solid var(--line);
+        font-family: "Jost", sans-serif;
+        font-size: 15px;
+      }
+      .enq-contact a {
+        color: var(--gold);
+      }
+      .enq-contact a:hover {
+        color: var(--gold-bright);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .enq-main {
+        padding: 40px 36px 32px;
+        overflow: auto;
+      }
+      .enq-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .enq .field {
+        margin: 0 0 16px;
+      }
+      .enq .field input,
+      .enq .field textarea {
+        padding: 13px 14px;
+        border: 1px solid #3d5870;
+        border-radius: 12px;
+        background: rgba(4, 24, 40, 0.7);
+        transition:
+          border-color 0.25s,
+          box-shadow 0.25s;
+      }
+      .enq .field input:focus,
+      .enq .field textarea:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 3px rgba(230, 191, 124, 0.15);
+      }
+      .enq-need {
+        margin: 0 0 16px;
+        padding: 0;
+        border: 0;
+        min-width: 0;
+      }
+      .enq-need legend {
+        padding: 0;
+        margin-bottom: 8px;
+        font-family: "Jost", sans-serif;
+        font-size: 12px;
+        color: var(--gold);
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .chip {
+        position: relative;
+        display: inline-block;
+      }
+      .chip input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .chip span {
+        display: inline-block;
+        padding: 9px 15px;
+        border: 1px solid #3d5870;
+        border-radius: 999px;
+        background: #0b253a;
+        font-size: 13px;
+        transition:
+          background 0.25s,
+          border-color 0.25s,
+          color 0.25s;
+      }
+      .chip:hover span {
+        border-color: var(--gold);
+      }
+      .chip input:checked + span {
+        background: var(--gold);
+        border-color: var(--gold);
+        color: #06192a;
+        font-weight: 600;
+      }
+      .chip input:focus-visible + span {
+        outline: 2px solid var(--gold-bright);
+        outline-offset: 2px;
+      }
+      .enq-submit {
+        width: 100%;
+        margin-top: 4px;
+      }
+      .enq-close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(230, 191, 124, 0.4);
+        border-radius: 50%;
+        background: rgba(3, 14, 25, 0.6);
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        transition:
+          background 0.25s,
+          border-color 0.25s;
+      }
+      .enq-close:hover {
+        background: rgba(230, 191, 124, 0.18);
+        border-color: var(--gold);
+      }
+      .enq-success {
+        display: grid;
+        justify-items: center;
+        gap: 12px;
+        padding: 56px 12px;
+        text-align: center;
+      }
+      .enq-success[hidden] {
+        display: none;
+      }
+      .enq-success h3 {
+        margin: 6px 0 0;
+        font-size: 30px;
+      }
+      .enq-success p {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-family: "Jost", sans-serif;
+        font-size: 17px;
+        font-weight: 300;
+      }
+      .enq-check {
+        width: 76px;
+        height: 76px;
+        color: var(--gold);
+      }
+      .enq-check circle {
+        stroke-dasharray: 151;
+        stroke-dashoffset: 151;
+        animation: enq-draw 0.7s ease forwards;
+      }
+      .enq-check path {
+        stroke-dasharray: 40;
+        stroke-dashoffset: 40;
+        animation: enq-draw 0.5s 0.5s ease forwards;
+      }
+      @media (max-width: 760px) {
+        .dialog.enq {
+          grid-template-columns: 1fr;
+          overflow: auto;
+          border-radius: 18px;
+        }
+        .enq-side {
+          padding: 26px 22px 18px;
+          border-right: 0;
+          border-bottom: 1px solid rgba(230, 191, 124, 0.22);
+        }
+        .enq-side h2 {
+          padding-right: 40px;
+          font-size: 24px;
+        }
+        .enq-side p {
+          font-size: 15px;
+        }
+        .enq-mark {
+          width: 40px;
+          height: 40px;
+        }
+        .enq-contact {
+          display: none;
+        }
+        .enq-main {
+          padding: 22px;
+          overflow: visible;
+        }
+        .enq-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+      }
+      /* Very small phones (320-360px): keep the header on one row */
+      @media (max-width: 360px) {
+        .nav {
+          gap: 6px;
+        }
+        .wordmark {
+          gap: 6px;
+          letter-spacing: 0.05em;
+        }
+        .brand-mark {
+          width: 28px;
+          height: 28px;
+        }
+        .nav > .btn {
+          letter-spacing: 0.02em;
+        }
+      }
+      /* Section labels on the light bands: darker gold for legibility */
+      .band .eyebrow {
+        color: #94662c;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <nav class="wrap nav">
+        <a class="wordmark" href="#home">
+          <img
+            alt=""
+            class="brand-mark"
+            height="40"
+            src="assets/tbr-header-logo.png"
+            width="40"
+          />
+          <span class="brand-text"
+            >THEBUSINESSROOM<small
+              >STRATEGIC CONTENT PRODUCTION &amp; MANAGEMENT</small
+            ></span
+          >
+        </a>
+        <div class="links" id="primary-navigation">
+          <a href="#work">Our Work</a><a href="#expertise">Expertise</a
+          ><a href="#approach">Our Approach</a><a href="#about">About</a
+          ><a href="#founder">Founder</a>
+        </div>
+        <button
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Open navigation"
+          class="menu-toggle"
+          type="button"
+        >
+          ☰</button
+        ><a class="btn" data-open-enquiry href="#contact">Start a Project ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section class="hero" id="home">
+        <div class="wrap hero-grid">
+          <div>
+            <div class="eyebrow">Strategic content. Real business stories.</div>
+            <h1>
+              Your Friendly Neighborhood <span class="gold">Production Partner.</span>
+            </h1>
+            <p class="lead">
+              We don't just create content. We help businesses showcase what
+              they do, how they do it, and the people behind it — through
+              thoughtful production and a consistent digital presence.
+            </p>
+            <div class="actions">
+              <a class="btn" href="#work">Explore Our Work ↗</a
+              ><a class="btn outline" href="#contact">Let's Collaborate</a>
+            </div>
+            
+          </div>
+          <div class="hero-art">
+            <img
+              alt="Official THEBUSINESSROOM gold logo and navy branding"
+              src="assets/tbr-brand-lockup.png"
+            />
+          </div>
+        </div>
+      </section>
+      <section class="section" id="work">
+        <div class="wrap">
+          <div class="section-head">
+            <div>
+              <div class="eyebrow">01 / Selected work</div>
+              <h2>Stories We've <span class="gold">Brought to Life.</span></h2>
+              <p class="sub">
+                Explore our video portfolio by industry and production style.
+                Each collection is built to show how we translate a business
+                into compelling content.
+              </p>
+            </div>
+            <span class="pill">12 curated categories</span>
+          </div>
+          <div aria-label="Filter portfolio" class="filters" id="filters"></div>
+          <div class="tools">
+            <input
+              aria-label="Search projects"
+              class="search"
+              id="search"
+              placeholder="Search projects or industries…"
+              type="search"
+            /><span class="count" id="count"></span>
+          </div>
+          <div class="gallery" id="gallery"></div>
+          <div class="load-more" id="loadMoreWrap" hidden>
+            <button class="btn outline" id="loadMore" type="button">
+              Load more
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="section band" id="expertise">
+        <div class="wrap">
+          <div class="eyebrow">02 / What we deliver</div>
+          <h2>One Creative Partner.<br />From Idea to Impact.</h2>
+          <p class="sub">
+            Production is only part of the story. We connect creative direction,
+            content execution, and ongoing management to support a stronger
+            brand presence.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <span class="num">01 / BRAND VISIBILITY</span>
+              <h3>Strategic Content &amp; Storytelling</h3>
+              <p>
+                Content ideas, brand narratives, scripting, founder-led
+                storytelling, and messaging that makes your business easier to
+                understand and remember.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">02 / PREMIUM PERCEPTION</span>
+              <h3>Video Production &amp; Editing</h3>
+              <p>
+                Cinematic brand films, on-site shoots, professional video
+                production, polished editing, product videos, and commercial
+                storytelling.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">03 / CONSISTENT PRESENCE</span>
+              <h3>Social &amp; Short-Form Content</h3>
+              <p>
+                Reels, content repurposing, social media management, influencer
+                collaborations, and an organized publishing workflow.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">04 / TRUST &amp; AUTHORITY</span>
+              <h3>Founder &amp; Corporate Branding</h3>
+              <p>
+                Thought-leadership videos, executive interviews, business
+                profiles, behind-the-scenes stories, and team culture content.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">05 / DEEPER ENGAGEMENT</span>
+              <h3>Podcasts &amp; Interviews</h3>
+              <p>
+                Professional podcast production, multi-format interviews, and
+                short-form highlights from longer conversations.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">06 / BUSINESS RELEVANCE</span>
+              <h3>Industry-Focused Production</h3>
+              <p>
+                Tailored visual storytelling for architecture, hospitality,
+                salons, real estate, corporate businesses, events, and product
+                brands.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="approach">
+        <div class="wrap">
+          <div class="eyebrow">03 / How we work</div>
+          <h2>Creative Thinking. <span class="gold">Clear Execution.</span></h2>
+          <div class="steps">
+            <div class="step">
+              <strong>01</strong>
+              <h3>Discover</h3>
+              <p>
+                Understand your business, audience, identity, and priorities.
+              </p>
+            </div>
+            <div class="step">
+              <strong>02</strong>
+              <h3>Plan</h3>
+              <p>
+                Shape content ideas, scripts, shot lists, and production
+                timelines.
+              </p>
+            </div>
+            <div class="step">
+              <strong>03</strong>
+              <h3>Produce</h3>
+              <p>
+                Capture, edit, and refine content for the platforms that matter.
+              </p>
+            </div>
+            <div class="step">
+              <strong>04</strong>
+              <h3>Maintain</h3>
+              <p>
+                Support a consistent publishing presence and review what
+                resonates.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section band" id="about">
+        <div class="wrap">
+          <div class="eyebrow">04 / Who we are</div>
+          <h2>Built Around the <br />Businesses Behind the Brand.</h2>
+          <p class="sub">
+            THEBUSINESSROOM is a strategic content production and social media
+            management company working with local and international businesses.
+            We bring on-site production, short-form video, founder storytelling,
+            and ongoing content management together under one roof.
+          </p>
+          <div class="feature-grid">
+            <div class="feature">
+              <span class="num">CORPORATE EXPERIENCE</span>
+              <h3>ZionTech IT Solutions LLC</h3>
+              <p>
+                Onboarded for an ongoing content production and social media
+                management engagement, including business-focused content
+                strategy and production.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">CROSS-INDUSTRY WORK</span>
+              <h3>Visual Storytelling</h3>
+              <p>
+                Project experience spanning interior design, architecture, and
+                product-focused businesses.
+              </p>
+            </div>
+            <div class="feature">
+              <span class="num">PURPOSE-BUILT STUDIO</span>
+              <h3>End-to-End Content</h3>
+              <p>
+                Developed structured services, proposals, and workflows to make
+                professional content production easier for growing businesses.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="founder">
+        <div class="wrap">
+          <div class="eyebrow">05 / The person behind the vision</div>
+          <div class="founder-layout">
+            <div>
+              <img
+                alt="Portrait supplied by Hemanth G, founder of THEBUSINESSROOM"
+                class="founder-portrait"
+                loading="lazy"
+                src="assets/founder-hemanth.jpg"
+              />
+            </div>
+            <div class="founder-copy">
+              <div class="eyebrow">Meet the Founder</div>
+              <h2 class="founder-name">HEMANTH.G</h2>
+              <p class="gold" style="font-weight: 700">
+                Founder · THEBUSINESSROOM
+              </p>
+              <p>
+                HEMANTH.G brings a cross-industry perspective to storytelling,
+                shaped by hands-on experience in technology operations,
+                commerce, marketing, branding, business development, and
+                communications.
+              </p>
+              <p>
+                Alongside his undergraduate studies, he completed internships
+                across multiple business disciplines. After graduating, he
+                worked in frontline YouTube operations serving a Google client,
+                gaining experience in platform-focused processes and
+                professional delivery.
+              </p>
+              <p>
+                He later pursued studies in International Strategic Marketing
+                Management at the University of Greenwich in London, leaving the
+                programme before completing the degree while obtaining
+                certification. His time in London also included
+                international-standard hospitality experience as a chef and
+                mixologist, alongside work spanning events, business operations,
+                and content strategy.
+              </p>
+              <p>
+                Drawing on these experiences, he independently founded
+                THEBUSINESSROOM from the ground up — a strategic content
+                production and social media management company helping local and
+                international businesses showcase their work, their identity,
+                and the people behind them.
+              </p>
+              <p class="gold">
+                <em
+                  >Different industries. One perspective: every business has a
+                  story worth telling.</em
+                >
+              </p>
+              <div class="founder-contact">
+                <a class="btn" href="tel:+919502016937">Call the Founder ↗</a
+                ><a
+                  class="btn outline"
+                  href="https://wa.me/918978492608"
+                  rel="noopener"
+                  target="_blank"
+                  >WhatsApp ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cta" id="contact">
+        <div class="wrap">
+          <div class="eyebrow">06 / Let's create something meaningful</div>
+          <h2>
+            You've Built Something Worth
+            <span class="gold">Showing the World.</span>
+          </h2>
+          <p>
+            Tell us about your business, what you want to showcase, and the kind
+            of content you need.
+          </p>
+          <button class="btn" id="enquire">Start a Project Enquiry ↗</button>
+          
+        </div>
+      </section>
+      <section class="credential-section" id="credentials">
+        <div class="wrap">
+          <figure class="credential">
+            <a
+              href="assets/IMG_5909.JPG.jpeg"
+              rel="noopener"
+              target="_blank"
+              ><img
+                alt="Experience certificate issued by the Student Union of Greenwich University to Hemanth Guddeti for Strategic Digital Marketing and Management"
+                height="1491"
+                loading="lazy"
+                src="assets/IMG_5909.JPG.jpeg"
+                width="1055"
+            /></a>
+            <figcaption>
+              Experience certificate — Student Union, University of Greenwich,
+              Nov 2023 – Jul 2024
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <div class="footer-brand">THEBUSINESSROOM</div>
+            <span>Strategic Content Production &amp; Management</span>
+            <h4 class="footer-heading">Studio</h4>
+            <span>For Businesses That Want More. · Hyderabad, India</span>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">Contact</h4>
+            <span>Founder: <strong>HEMANTH.G</strong></span>
+            <a href="tel:+919502016937">Contact: +91 9502016937</a>
+            <a href="https://wa.me/918978492608" rel="noopener" target="_blank"
+              >WhatsApp: +91 8978492608</a
+            >
+            <a href="mailto:Thebusinessroom.co@gmail.com"
+              >Email: Thebusinessroom.co@gmail.com</a
+            >
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">Follow</h4>
+            <a
+              href="https://www.instagram.com/thebusinessroom.co/"
+              rel="noopener"
+              target="_blank"
+              >Instagram: @thebusinessroom.co</a
+            >
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © <span id="year"></span> THEBUSINESSROOM. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <div
+      aria-label="Project enquiry"
+      aria-modal="true"
+      class="modal"
+      id="enquiryModal"
+      role="dialog"
+    >
+      <div class="dialog enq">
+        <button aria-label="Close" class="close enq-close" data-close="enquiryModal">
+          ×
+        </button>
+        <aside class="enq-side">
+          <img
+            alt=""
+            class="enq-mark"
+            height="52"
+            src="assets/tbr-header-logo.png"
+            width="52"
+          />
+          <h2>Tell Us About Your Project</h2>
+          <p>Tell us a little about your project and we will get back to you.</p>
+          <ul class="enq-contact">
+            <li><a href="tel:+919502016937">+91 9502016937</a></li>
+            <li>
+              <a href="https://wa.me/918978492608" rel="noopener" target="_blank"
+                >WhatsApp: +91 8978492608</a
+              >
+            </li>
+            <li>
+              <a href="mailto:Thebusinessroom.co@gmail.com"
+                >Thebusinessroom.co@gmail.com</a
+              >
+            </li>
+          </ul>
+        </aside>
+        <div class="enq-main">
+          <form id="enquiryForm">
+            <div class="enq-row">
+              <div class="field">
+                <label for="eName">Name *</label
+                ><input id="eName" autocomplete="name" required="" />
+              </div>
+              <div class="field">
+                <label for="eBusiness">Business / organization *</label
+                ><input id="eBusiness" autocomplete="organization" required="" />
+              </div>
+            </div>
+            <div class="enq-row">
+              <div class="field">
+                <label for="eEmail">Email *</label
+                ><input id="eEmail" autocomplete="email" required="" type="email" />
+              </div>
+              <div class="field">
+                <label for="ePhone">Phone</label
+                ><input id="ePhone" autocomplete="tel" type="tel" />
+              </div>
+            </div>
+            <fieldset class="enq-need">
+              <legend>What do you need?</legend>
+              <div class="chips">
+                <label class="chip"
+                  ><input checked name="need" type="radio" value="Video production" /><span
+                    >Video production</span
+                  ></label
+                >
+                <label class="chip"
+                  ><input name="need" type="radio" value="Reels &amp; short-form content" /><span
+                    >Reels &amp; short-form content</span
+                  ></label
+                >
+                <label class="chip"
+                  ><input name="need" type="radio" value="Social media management" /><span
+                    >Social media management</span
+                  ></label
+                >
+                <label class="chip"
+                  ><input name="need" type="radio" value="Brand &amp; founder storytelling" /><span
+                    >Brand &amp; founder storytelling</span
+                  ></label
+                >
+                <label class="chip"
+                  ><input name="need" type="radio" value="Multiple services / ongoing partnership" /><span
+                    >Multiple services / ongoing partnership</span
+                  ></label
+                >
+              </div>
+            </fieldset>
+            <div class="field">
+              <label for="eBrief">Tell us about the project</label
+              ><textarea id="eBrief" rows="4"></textarea>
+            </div>
+            <button class="btn enq-submit" type="submit">Send Enquiry ↗</button>
+            <p class="hint" id="enquiryStatus" role="status"></p>
+          </form>
+          <div class="enq-success" id="enquirySuccess" hidden>
+            <svg class="enq-check" viewBox="0 0 52 52" aria-hidden="true">
+              <circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="2" />
+              <path
+                d="M14 27l8 8 16-17"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <h3>Thank you!</h3>
+            <p>Your enquiry has been sent and we will be in touch soon.</p>
+            <button class="btn outline" data-close="enquiryModal" type="button">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+    <script>
+      // Public (anon) Supabase client only; row-level security guards the data.
+      const PAGE_SIZE = 12;
+      const $ = (id) => document.getElementById(id);
+      const escapeHtml = (s) =>
+        String(s ?? "").replace(
+          /[&<>"']/g,
+          (c) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            })[c],
+        );
+      const safeUrl = (u) => {
+        try {
+          const x = new URL(u);
+          return ["https:", "http:"].includes(x.protocol) ? x.href : "";
+        } catch (e) {
+          return "";
+        }
+      };
+      const configured =
+        typeof SUPABASE_URL === "string" &&
+        /^https:\/\//.test(SUPABASE_URL) &&
+        typeof SUPABASE_ANON_KEY === "string" &&
+        SUPABASE_ANON_KEY !== "" &&
+        !SUPABASE_ANON_KEY.startsWith("YOUR_") &&
+        !!window.supabase;
+      const sb = configured
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+        : null;
+      if (!sb) console.warn("Supabase is not configured: see config.js");
+
+      let categories = [];
+      let activeCategory = null; // category id as a string; null = all work
+      let page = 0;
+      let loaded = 0;
+      let requestId = 0;
+      let searchTimer;
+
+      function renderFilters() {
+        const tabs = [{ id: null, name: "All Work" }, ...categories];
+        $("filters").innerHTML = tabs
+          .map((c) => {
+            const id = c.id === null ? null : String(c.id);
+            return `<button class="filter ${id === activeCategory ? "active" : ""}" data-cat="${escapeHtml(id ?? "")}">${escapeHtml(c.name)}</button>`;
+          })
+          .join("");
+        document.querySelectorAll("[data-cat]").forEach(
+          (b) =>
+            (b.onclick = () => {
+              activeCategory = b.dataset.cat === "" ? null : b.dataset.cat;
+              renderFilters();
+              loadVideos(true);
+            }),
+        );
+      }
+
+      function videoCard(v) {
+        const src = safeUrl(v.video_url);
+        const poster = safeUrl(v.poster_url);
+        const cat = categories.find((c) => String(c.id) === String(v.category_id));
+        return `<article class="project"><div class="poster"><video preload="${poster ? "none" : "metadata"}" controls playsinline${poster ? ` poster="${escapeHtml(poster)}"` : ""}${src ? ` src="${escapeHtml(src)}${poster ? "" : "#t=0.1"}"` : ""}></video></div><div class="project-body">${cat ? `<div class="tag">${escapeHtml(cat.name)}</div>` : ""}<h3>${escapeHtml(v.title)}</h3>${v.location ? `<p>${escapeHtml(v.location)}</p>` : ""}</div></article>`;
+      }
+
+      function showMessage(text) {
+        $("gallery").innerHTML = `<div class="empty"><p>${escapeHtml(text)}</p></div>`;
+      }
+
+      async function loadVideos(reset) {
+        const id = ++requestId;
+        const more = $("loadMore");
+        if (reset) {
+          page = 0;
+          loaded = 0;
+          $("gallery").replaceChildren();
+          $("loadMoreWrap").hidden = true;
+          $("count").textContent = "";
+        }
+        if (!sb) {
+          showMessage("New work coming soon.");
+          return;
+        }
+        more.disabled = true;
+        more.textContent = "Loading…";
+        const from = page * PAGE_SIZE;
+        let q = sb
+          .from("videos")
+          .select("*", { count: "exact" })
+          .eq("is_published", true)
+          .order("created_at", { ascending: false })
+          .range(from, from + PAGE_SIZE - 1);
+        if (activeCategory) q = q.eq("category_id", activeCategory);
+        const term = $("search").value.trim().replace(/[,()%*\\]/g, " ");
+        if (term) q = q.or(`title.ilike.%${term}%,location.ilike.%${term}%`);
+        const { data, error, count } = await q;
+        if (id !== requestId) return;
+        more.disabled = false;
+        more.textContent = "Load more";
+        if (error) {
+          console.error(error);
+          if (!reset && page > 0) page--;
+          if (reset) {
+            showMessage("We couldn't load our work right now. Please try again shortly.");
+          } else {
+            $("loadMoreWrap").hidden = false;
+          }
+          return;
+        }
+        const rows = data || [];
+        if (reset && !rows.length) {
+          showMessage("New work coming soon.");
+          return;
+        }
+        $("gallery").insertAdjacentHTML("beforeend", rows.map(videoCard).join(""));
+        loaded += rows.length;
+        const total = count ?? loaded;
+        $("count").textContent =
+          `${total} video project${total === 1 ? "" : "s"} shown`;
+        $("loadMoreWrap").hidden = loaded >= total || !rows.length;
+      }
+
+      async function loadCategories() {
+        if (sb) {
+          const { data, error } = await sb
+            .from("categories")
+            .select("*")
+            .order("sort_order", { ascending: true });
+          if (error) console.error(error);
+          else categories = data || [];
+        }
+        renderFilters();
+      }
+
+      function openModal(id) {
+        $(id).classList.add("open");
+      }
+      function closeModal(id) {
+        $(id).classList.remove("open");
+      }
+      document
+        .querySelectorAll("[data-close]")
+        .forEach((b) => (b.onclick = () => closeModal(b.dataset.close)));
+      document.querySelectorAll(".modal").forEach(
+        (m) =>
+          (m.onclick = (e) => {
+            if (e.target === m) closeModal(m.id);
+          }),
+      );
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape")
+          document
+            .querySelectorAll(".modal.open")
+            .forEach((m) => closeModal(m.id));
+      });
+
+      $("search").oninput = () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => loadVideos(true), 300);
+      };
+      $("loadMore").onclick = () => {
+        page++;
+        loadVideos(false);
+      };
+
+      function openEnquiry() {
+        $("enquiryForm").hidden = false;
+        $("enquirySuccess").hidden = true;
+        $("enquiryStatus").textContent = "";
+        openModal("enquiryModal");
+      }
+      $("enquire").onclick = openEnquiry;
+      // Same action from any button marked data-open-enquiry (href stays as a no-JS fallback)
+      document.querySelectorAll("[data-open-enquiry]").forEach(
+        (el) =>
+          (el.onclick = (e) => {
+            e.preventDefault();
+            openEnquiry();
+          }),
+      );
+      $("enquiryForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const btn = form.querySelector('button[type="submit"]');
+        const status = $("enquiryStatus");
+        if (!sb) {
+          status.textContent =
+            "Sorry, enquiries can't be sent right now. Please call or WhatsApp us instead.";
+          return;
+        }
+        const label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        status.textContent = "";
+        const brief = $("eBrief").value.trim();
+        const message =
+          `Business: ${$("eBusiness").value.trim()}\nService: ${form.querySelector('input[name="need"]:checked').value}` +
+          (brief ? `\n\n${brief}` : "");
+        try {
+          const { error } = await sb.from("enquiries").insert({
+            name: $("eName").value.trim(),
+            email: $("eEmail").value.trim(),
+            phone: $("ePhone").value.trim() || null,
+            message,
+          });
+          if (error) throw error;
+          form.reset();
+          form.hidden = true;
+          $("enquirySuccess").hidden = false;
+        } catch (err) {
+          console.error(err);
+          status.textContent =
+            "Sorry, something went wrong. Please try again, or call or WhatsApp us.";
+        } finally {
+          btn.disabled = false;
+          btn.textContent = label;
+        }
+      };
+
+      $("year").textContent = new Date().getFullYear();
+      renderFilters();
+      loadCategories().then(() => loadVideos(true));
+    </script>
+    <script>
+      (function () {
+        const header = document.querySelector(".top"),
+          toggle = document.querySelector(".menu-toggle"),
+          nav = document.querySelector("#primary-navigation");
+        const onScroll = () =>
+          header.classList.toggle("scrolled", window.scrollY > 16);
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        const close = () => {
+          nav.classList.remove("open");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.setAttribute("aria-label", "Open navigation");
+          toggle.textContent = "☰";
+        };
+        toggle.addEventListener("click", () => {
+          const opened = nav.classList.toggle("open");
+          toggle.setAttribute("aria-expanded", String(opened));
+          toggle.setAttribute(
+            "aria-label",
+            opened ? "Close navigation" : "Open navigation",
+          );
+          toggle.textContent = opened ? "×" : "☰";
+        });
+        nav
+          .querySelectorAll("a")
+          .forEach((a) => a.addEventListener("click", close));
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") close();
+        });
+        document.addEventListener("click", (e) => {
+          if (!header.contains(e.target)) close();
+        });
+        const sections = [...document.querySelectorAll("main section[id]")];
+        if ("IntersectionObserver" in window) {
+          const navObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  nav
+                    .querySelectorAll("a")
+                    .forEach((a) =>
+                      a.classList.toggle(
+                        "current",
+                        a.getAttribute("href") === "#" + entry.target.id,
+                      ),
+                    );
+                }
+              });
+            },
+            { rootMargin: "-30% 0px -60% 0px" },
+          );
+          sections.forEach((el) => navObserver.observe(el));
+          const reduceMotion =
+            window.matchMedia &&
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (!reduceMotion) {
+            const STAGGER = 120;
+            const REVEAL_MS = 700;
+            const targets = [
+              ...document.querySelectorAll(
+                ".hero-grid > *,.section-head,.feature,.step,.founder-layout > *,.cta .wrap,.credential",
+              ),
+              ...[
+                ...document.querySelectorAll(".section .eyebrow, .section h2"),
+              ].filter((el) => !el.closest(".section-head, .founder-layout")),
+            ];
+            const revealObserver = new IntersectionObserver(
+              (entries) => {
+                entries.forEach((e) => {
+                  if (!e.isIntersecting) return;
+                  const el = e.target;
+                  const isCard = el.matches(".feature, .step");
+                  const delay = isCard
+                    ? [...el.parentElement.children].indexOf(el) * STAGGER
+                    : 0;
+                  if (isCard) el.style.transitionDelay = delay + "ms";
+                  el.classList.add("visible");
+                  revealObserver.unobserve(el);
+                  if (isCard)
+                    setTimeout(
+                      () => {
+                        el.classList.remove("reveal", "visible");
+                        el.style.transitionDelay = "";
+                      },
+                      delay + REVEAL_MS + 60,
+                    );
+                });
+              },
+              { threshold: 0.08 },
+            );
+            targets.forEach((el) => el.classList.add("reveal"));
+            document.body.classList.add("motion-ready");
+            targets.forEach((el) => revealObserver.observe(el));
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
