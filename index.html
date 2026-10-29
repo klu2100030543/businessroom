@@ -1727,6 +1727,47 @@
       .band .eyebrow {
         color: #94662c;
       }
+      /* Enquiry modal: always scrollable when the window is short or zoomed in */
+      .dialog.enq {
+        grid-template-rows: minmax(0, 1fr);
+      }
+      .enq-side,
+      .enq-main {
+        min-height: 0;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      @media (max-height: 640px) and (min-width: 761px) {
+        .enq-side {
+          padding: 28px 28px 22px;
+        }
+        .enq-main {
+          padding: 28px 28px 22px;
+        }
+        .enq-side p {
+          font-size: 15px;
+        }
+      }
+      @media (max-width: 760px) {
+        .dialog.enq {
+          grid-template-rows: auto;
+          overflow-y: auto;
+          overscroll-behavior: contain;
+        }
+        .enq-side,
+        .enq-main {
+          overflow: visible;
+        }
+      }
+      .hp {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
@@ -1766,9 +1807,9 @@
       <section class="hero" id="home">
         <div class="wrap hero-grid">
           <div>
-            <div class="eyebrow">Strategic content. Real business stories.</div>
+            <div class="eyebrow">Strategic Content Production &amp; Management</div>
             <h1>
-              Your Friendly Neighborhood <span class="gold">Production Partner.</span>
+              For Businesses <span class="gold">That Want More.</span>
             </h1>
             <p class="lead">
               We don't just create content. We help businesses showcase what
@@ -2192,6 +2233,15 @@
               <label for="eBrief">Tell us about the project</label
               ><textarea id="eBrief" rows="4"></textarea>
             </div>
+            <input
+              aria-hidden="true"
+              autocomplete="off"
+              class="hp"
+              id="eTrap"
+              name="_gotcha"
+              tabindex="-1"
+              type="text"
+            />
             <button class="btn enq-submit" type="submit">Send Enquiry ↗</button>
             <p class="hint" id="enquiryStatus" role="status"></p>
           </form>
@@ -2406,7 +2456,16 @@
         const form = e.target;
         const btn = form.querySelector('button[type="submit"]');
         const status = $("enquiryStatus");
-        if (!sb) {
+        const showThanks = () => {
+          form.reset();
+          form.hidden = true;
+          $("enquirySuccess").hidden = false;
+        };
+        if ($("eTrap").value) return showThanks(); // honeypot: silently ignore bots
+        const hasMail =
+          typeof FORMSPREE_ENDPOINT === "string" &&
+          /^https:\/\/formspree\.io\//.test(FORMSPREE_ENDPOINT);
+        if (!sb && !hasMail) {
           status.textContent =
             "Sorry, enquiries can't be sent right now. Please call or WhatsApp us instead.";
           return;
@@ -2415,31 +2474,54 @@
         btn.disabled = true;
         btn.textContent = "Sending…";
         status.textContent = "";
+        const name = $("eName").value.trim();
+        const business = $("eBusiness").value.trim();
+        const email = $("eEmail").value.trim();
+        const phone = $("ePhone").value.trim();
+        const service = form.querySelector('input[name="need"]:checked').value;
         const brief = $("eBrief").value.trim();
         const message =
-          `Business: ${$("eBusiness").value.trim()}\nService: ${form.querySelector('input[name="need"]:checked').value}` +
+          `Business: ${business}\nService: ${service}` +
           (brief ? `\n\n${brief}` : "");
-        try {
-          const { error } = await sb.from("enquiries").insert({
-            name: $("eName").value.trim(),
-            email: $("eEmail").value.trim(),
-            phone: $("ePhone").value.trim() || null,
-            message,
-          });
-          if (error) throw error;
-          form.reset();
-          form.hidden = true;
-          $("enquirySuccess").hidden = false;
-        } catch (err) {
-          console.error(err);
+        // 1) Save in Supabase (the record you read in the admin portal)
+        const saveToDb = sb
+          ? sb
+              .from("enquiries")
+              .insert({ name, email, phone: phone || null, message })
+              .then(({ error }) => {
+                if (error) throw error;
+              })
+          : Promise.reject(new Error("Supabase is not configured"));
+        // 2) Email notification through Formspree
+        const sendMail = hasMail
+          ? fetch(FORMSPREE_ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", Accept: "application/json" },
+              body: JSON.stringify({
+                name,
+                email,
+                phone,
+                business,
+                service,
+                message: brief,
+                _subject: `New enquiry from ${name} (${business})`,
+              }),
+            }).then((r) => {
+              if (!r.ok) throw new Error("Formspree " + r.status);
+            })
+          : Promise.reject(new Error("Formspree is not configured"));
+        const [db, mail] = await Promise.allSettled([saveToDb, sendMail]);
+        if (db.status === "rejected") console.error("Save failed:", db.reason);
+        if (mail.status === "rejected") console.error("Email failed:", mail.reason);
+        if (db.status === "fulfilled" || mail.status === "fulfilled") {
+          showThanks();
+        } else {
           status.textContent =
             "Sorry, something went wrong. Please try again, or call or WhatsApp us.";
-        } finally {
-          btn.disabled = false;
-          btn.textContent = label;
         }
+        btn.disabled = false;
+        btn.textContent = label;
       };
-
       $("year").textContent = new Date().getFullYear();
       renderFilters();
       loadCategories().then(() => loadVideos(true));
